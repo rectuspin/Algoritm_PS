@@ -1,22 +1,23 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
+
 using namespace std;
 
-vector<long long> permu;
+long long dp[30][30];
 
 long long comb(int n,int m) {
-	int i;
-	long long sol = 1;
-	long long nFacto = 1;
-	for ( i = 2; i <= m; i++){
-		sol *=i;
-		if (i <= n)
-			sol /= i;
-		if (i <= m - n)
-			sol /= i;
+	int i,j;
+	for ( i = 1; i <= m; i++){
+		dp[i][1] = i;
+		dp[i][i] = 1;
 	}
-	return sol;
+	for ( i = 2; i <= m; i++){
+		for ( j = 2; j <= n; j++){
+			//binomial theorem, Pascal's triangle
+			dp[i][j] = dp[i - 1][j-1] + dp[i-1][j];
+		}
+	}	
+	return dp[m][n];
 }
 
 int main()
