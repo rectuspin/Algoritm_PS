@@ -5,17 +5,17 @@ int main()
 {
 	ios::sync_with_stdio(false);
 	cin.tie(NULL);
-	int n,i,prev_remainder,tmp;
-
-	while (cin >> n) {
-		prev_remainder = 1%n;
-		for (i = 1; i <= n; i++) {
-			if (prev_remainder == 0) {
-				cout << i<<"\n";
-				break;
-			}
-			prev_remainder = (prev_remainder * 10 + 1) % n;
-		}
+	int max_num, min_num, n,i,tmp;
+	cin >> n;
+	min_num = 1000000;
+	max_num = -1;
+	for ( i = 0; i < n; i++){
+		cin >> tmp;
+		if (tmp > max_num)
+			max_num=tmp;
+		if(tmp<min_num)
+			min_num=tmp;
 	}
+	cout << max_num * min_num;
 	return 0;
 }
