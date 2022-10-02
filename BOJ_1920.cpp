@@ -1,32 +1,48 @@
 #include <iostream>
 #include <algorithm>
-#include <vector>
 
 using namespace std;
 
+int findNum(int arr[], int size, int num) {
+	int res = 0;
+	int low = 0;
+	int high = size-1;
+	int mid;
+	while (low<=high) {
+		mid = (low + high) / 2;
+		if (arr[mid] == num) {
+			res = 1;
+			break;
+		}
+		else if (arr[mid] > num) {
+			high = mid - 1;
+		}
+		else {
+			low = mid + 1;
+		}
+	}
+	return res;
+}
+
 int main() {
 
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
+	ios::sync_with_stdio(0);
+	cin.tie(0);
 
 	int i, t, n,m;
-	vector<int> vec, val;
+	int arr[100000];
 	cin >> n;
 	for (i = 0; i < n; i++) {
 		cin >> t;
-		vec.push_back(t);
+		arr[i]=t;
 	}
+	sort(arr, arr+n);
+
 	cin >> m;
 	for (i = 0; i < m; i++) {
 		cin >> t;
-		val.push_back(t);
+		cout << findNum(arr, n, t)<<"\n";
 	}
-	
-	for (i = 0; i < m; i++) {
-		if (find(vec.begin(), vec.end(), val[i]) != vec.end())
-			cout << 1 << "\n";
-		else
-			cout << 0 << "\n";
-	}
+
 	return 0;
 }
