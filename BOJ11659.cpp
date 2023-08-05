@@ -1,27 +1,29 @@
 #include <iostream>
 #include <vector>
-#include <string>
 
 using namespace std;
 
 int main() {
-	int n, sum, max;
-	double avg;
-	vector<int> v;
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
 
-	cin >> n;
-	v.resize(n);
-	max = -1;
-	for (int i = 0; i < n; i++) {
-		cin >> v[i];
-		max = (max > v[i]) ? max : v[i];
+	int n, m, i, j, k;
+	vector<int> v,sum;
+
+	cin >> n >> m;
+	v.resize(n+1);
+	sum.resize(n+1);
+
+	for (k = 1; k <= n; k++) {
+		cin >> v[k];
+		sum[k] = sum[k - 1] + v[k];
 	}
 	
-	sum = 0;
-	for (int i = 0; i < n; i++) {
-		sum += v[i];
+	for (k = 0; k < m; k++) {
+		cin >> i >> j;
+		cout << sum[j] - sum[i - 1]<<"\n";		
 	}
-	avg = sum * 100.0 / max / n;
-	cout << avg;
+	
 	return 0;
 }
