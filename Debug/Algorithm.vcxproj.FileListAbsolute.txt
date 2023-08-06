@@ -1,0 +1,2 @@
+D:\Visual Studio19\repos\Algorithm\Debug\Algorithm.exe
+D:\Visual Studio19\repos\Algorithm\Debug\Algorithm.pdb
